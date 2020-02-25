@@ -1,0 +1,6 @@
+framework module XouDevSpec {
+  umbrella header "XouDevSpec-umbrella.h"
+
+  export *
+  module * { export * }
+}

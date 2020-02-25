@@ -1,0 +1,22 @@
+{
+  "name": "XouDevSpec",
+  "version": "0.1.0",
+  "summary": "A short description of XouDevSpec.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/XanderSchoeman/XouDevSpec",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "XanderSchoeman": "Xschoeman@jhb.dvt.co.za"
+  },
+  "source": {
+    "git": "https://github.com/XanderSchoeman/XouDevSpec.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "XouDevSpec/Classes/**/*"
+}

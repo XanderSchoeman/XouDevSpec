@@ -1,0 +1,16 @@
+PODS:
+  - XouDevSpec (0.1.0)
+
+DEPENDENCIES:
+  - XouDevSpec (from `../`)
+
+EXTERNAL SOURCES:
+  XouDevSpec:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  XouDevSpec: 5d3006859d1f13287412621b4f7cb9f6e11cc1b4
+
+PODFILE CHECKSUM: 56a0520eb1b1873ff5c8657bff9b3cc7a25f6a03
+
+COCOAPODS: 1.8.4
