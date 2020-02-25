@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'XouDevSpec_Example' do
+  pod 'XouDevSpec', :path => '../'
+
+  target 'XouDevSpec_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
