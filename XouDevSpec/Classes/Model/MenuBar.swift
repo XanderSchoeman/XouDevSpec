@@ -8,7 +8,7 @@
 
 import UIKit
 
- class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate,
+ public class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate,
     UICollectionViewDelegateFlowLayout {
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -29,22 +29,22 @@ import UIKit
         let selectedIndexPath =  NSIndexPath(item: 0, section: 0)
         collectionView.selectItem(at: selectedIndexPath as IndexPath, animated: false, scrollPosition: [])
     }
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 4
     }
     // swiftlint:disable all
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+   public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath as IndexPath) as! MenuCell
         cell.imageView.image = UIImage(named: imageNames[indexPath.item])?.withTintColor(UIColor.rgb(red: 91, green: 14, blue: 13, alpha: 1), renderingMode: .alwaysTemplate)
         return cell
     }
     // swiftlint:enable all
-    func collectionView(_ collectionView: UICollectionView,
+    public func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: frame.width / 4, height: frame.height)
     }
-    func collectionView(_ collectionView: UICollectionView,
+    public func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
@@ -54,7 +54,7 @@ import UIKit
     }
 }
 
-class MenuCell: BaseCell {
+public class MenuCell: BaseCell {
     let imageView: UIImageView = {
         let iv = UIImageView()
         iv.image = UIImage(named: "Home")?.withTintColor(UIColor.rgb(red: 91, green: 14, blue: 13, alpha: 1),
@@ -63,18 +63,18 @@ class MenuCell: BaseCell {
         return iv
     }()
     //Have to set the render with tint colour to fix olour bug
-    override var isSelected: Bool {
+    public override var isSelected: Bool {
         didSet {
             imageView.tintColor = isSelected ? UIColor.white : UIColor.rgb(red: 91, green: 14, blue: 13, alpha: 1)
         }
     }
     //Have to set the render with tint colour to fix olour bug
-    override var isHighlighted: Bool {
+    public override var isHighlighted: Bool {
            didSet {
                imageView.tintColor = isHighlighted ? UIColor.white : UIColor.rgb(red: 91, green: 14, blue: 13, alpha: 1)
            }
        }
-    override func setupViews() {
+    public override func setupViews() {
         super.setupViews()
         addSubview(imageView)
         addConstraintsWithFormats(format: "H:[v0(28)]", views: imageView)

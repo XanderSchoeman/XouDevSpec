@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BaseCell: UICollectionViewCell {
+public class BaseCell: UICollectionViewCell {
     override init(frame: CGRect) {
            super.init(frame: frame)
            setupViews()
@@ -19,8 +19,8 @@ class BaseCell: UICollectionViewCell {
             fatalError("init(coder:) has not been implemented")
     }
 }
-class VideoCell: BaseCell {
-    var video: Video? {
+public class VideoCell: BaseCell {
+   public var video: Video? {
         didSet {
             titleLabel.text = video?.title
             setupThumbnailImage()
