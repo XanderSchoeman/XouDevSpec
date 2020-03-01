@@ -15,7 +15,7 @@ extension UIColor {
 }
 
 //Going to be added as a pod module
-extension UIView {
+public extension UIView {
     //constraints minimized #lessCode
     func addConstraintsWithFormats(format: String, views: UIView...) {
         var viewsDictionary = [String: UIView]()
@@ -35,7 +35,7 @@ extension UIView {
       return topViewController?.preferredStatusBarStyle ?? .default
    }
 }*/
-extension UINavigationController {
+public extension UINavigationController {
 
     func setStatusBar(backgroundColor: UIColor) {
         let statusBarFrame: CGRect
@@ -51,7 +51,7 @@ extension UINavigationController {
 
 }
 
-extension UIImageView {
+public extension UIImageView {
     func loadImageUsingUrlString(urlString: String) {
         let url = URL(string: urlString)
         URLSession.shared.dataTask(with: url!) { (data, response, error) in
