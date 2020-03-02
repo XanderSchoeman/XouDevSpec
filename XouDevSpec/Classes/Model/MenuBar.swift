@@ -13,7 +13,8 @@ import UIKit
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-         cv.backgroundColor = UIColor.rgb(red: 230, green: 32, blue: 31, alpha: 1)
+//         cv.backgroundColor = UIColor.rgb(red: 230, green: 32, blue: 31, alpha: 1)
+                 cv.backgroundColor = UIColor.rgb(red: 10, green: 30, blue: 64, alpha: 1)
         cv.dataSource = self
         cv.delegate = self
         return cv
@@ -35,7 +36,7 @@ import UIKit
     // swiftlint:disable all
    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath as IndexPath) as! MenuCell
-        cell.imageView.image = UIImage(named: imageNames[indexPath.item])?.withTintColor(UIColor.rgb(red: 91, green: 14, blue: 13, alpha: 1), renderingMode: .alwaysTemplate)
+        cell.imageView.image = UIImage(named: imageNames[indexPath.item])?.withTintColor(UIColor.rgb(red: 10, green: 30, blue: 64, alpha: 1), renderingMode: .alwaysTemplate)
         return cell
     }
     // swiftlint:enable all
@@ -54,7 +55,7 @@ import UIKit
     }
 }
 
-public class MenuCell: BaseCell {
+public class MenuCell: BasesCell {
     let imageView: UIImageView = {
         let iv = UIImageView()
         iv.image = UIImage(named: "Home")?.withTintColor(UIColor.rgb(red: 91, green: 14, blue: 13, alpha: 1),
