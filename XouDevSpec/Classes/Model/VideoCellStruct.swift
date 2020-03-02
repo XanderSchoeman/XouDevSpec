@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class BaseCell: UICollectionViewCell {
+public class BasesCell: UICollectionViewCell {
     override init(frame: CGRect) {
            super.init(frame: frame)
            setupViews()
@@ -19,21 +19,21 @@ public class BaseCell: UICollectionViewCell {
             fatalError("init(coder:) has not been implemented")
     }
 }
-public class VideoCell: BaseCell {
-   public var video: Video? {
+public class VideoCells: BasesCell {
+   public var anime: animeTopInfoStruct? {
         didSet {
-            titleLabel.text = video?.title
+            titleLabel.text = anime?.top.title
             setupThumbnailImage()
             setupProfileImage()
 
-            if let channelName = video?.channel?.name, let numberOfViews = video?.numberOfViews {
-                let numberFormatter = NumberFormatter()
-                numberFormatter.numberStyle = .decimal
-                let subtitleText = "\(channelName) • \(numberFormatter.string(from: numberOfViews)!) • 5 years ago "
+            if let type = anime?.top.type, let rank = anime?.top.rank, let endDate = anime?.top.end_date {
+                
+                
+                let subtitleText = "Type: \(type) • Rank: \((rank)) • EndDate: \(endDate) "
                 subtitleTextView.text = subtitleText
             }
             //meassure title text
-            if let title = video?.title {
+            if let title = anime?.top.title {
                 let size = CGSize(width: frame.width - 16 - 44 - 8 - 16, height: 1000)
                 let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
                 let estimatedRect = NSString(string: title).boundingRect(with: size,
@@ -50,12 +50,12 @@ public class VideoCell: BaseCell {
         }
     }
     func setupProfileImage() {
-        if let profileImageUrl = video?.channel?.profileImageName {
+        if let profileImageUrl = anime?.top.image_url {
             userProfileImageView.loadImageUsingUrlString(urlString: profileImageUrl)
         }
     }
     func setupThumbnailImage() {
-        if let thumbImageUrl = video?.thumbnailImageName {
+        if let thumbImageUrl = anime?.top.image_url {
             thumbnailImageView.loadImageUsingUrlString(urlString: thumbImageUrl)
         }
     }
