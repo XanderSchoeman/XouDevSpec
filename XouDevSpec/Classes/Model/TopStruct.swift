@@ -17,10 +17,6 @@ public struct animeTopInfo: Decodable {
         
 }
 
-//public struct TopIntStruct: Decodable {
-//    public var id = [TopDetail]()
-//}
-
 
 public struct Top: Decodable {
     public var mal_id: Int?
@@ -51,11 +47,13 @@ public struct Top: Decodable {
 
     }
 }
+
+
 public struct animeTopInfoStruct: Decodable {
     public var request_hash: String?
     public var request_cached: Bool?
     public var request_cache_expiry: Int?
-    public var top = Top()
+    public var top = TopStruct()
     
     public init() {
         request_hash.self = "request:top:f4a7cf4b1914728b1874e27d481c326e5b6431a6"
