@@ -30,7 +30,8 @@ TODO: Add long description of the pod here.
 
   s.ios.deployment_target = '13.0'
 
-  s.source_files = 'XouDevSpec/Classes/**/*'
+  #s.source_files = 'XouDevSpec/Classes/**/*'
+  s.source_files = 'XouDevSpec/**/*'
   
   # s.resource_bundles = {
   #   'XouDevSpec' => ['XouDevSpec/Assets/*.png']
