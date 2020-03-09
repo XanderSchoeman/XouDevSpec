@@ -7,11 +7,14 @@
 
 import UIKit
 
-//public class BaseAnimeCell: AnimeVideoCell {
-//
-//}
+protocol AnimeVideoCellProtocol : class {
+    func setAnimeVid(anime: animeTopInfoStruct)
+    
+}
 
-public class AnimeVideoCell: UITableViewCell {
+public class AnimeVideoCell: UITableViewCell, AnimeVideoCellProtocol {
+
+    
 
     @IBOutlet weak var videoImageView: UIImageView!
     
@@ -22,9 +25,7 @@ public class AnimeVideoCell: UITableViewCell {
         videoTitleLabel.text = anime.top.title
     if let profileImageUrl = anime.top.image_url {
         videoImageView.loadImageUsingUrlString(urlString: profileImageUrl)
+      }
     }
-    
-    
-    
-}
+
 }

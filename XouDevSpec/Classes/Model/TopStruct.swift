@@ -2,7 +2,6 @@
 
 
 import Foundation
-
 public struct animeTopInfo: Decodable {
     public var request_hash: String?
     public var request_cached: Bool?
@@ -31,7 +30,7 @@ public struct Top: Decodable {
     public var members: Int?
     public var score: Int?
     
-    public init( ){
+    public init() {
 
         mal_id.self = 0
         rank.self = 0
@@ -63,10 +62,6 @@ public struct animeTopInfoStruct: Decodable {
         
 }
 
-//public struct TopIntStruct: Decodable {
-//    public var id = [TopDetail]()
-//}
-
 
 public struct TopStruct: Decodable {
     public var mal_id: Int?
@@ -97,3 +92,4 @@ public struct TopStruct: Decodable {
 
     }
 }
+
