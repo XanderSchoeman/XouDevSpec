@@ -8,7 +8,8 @@
 import UIKit
 
 protocol AnimeVideoCellProtocol : class {
-    func setAnimeVid(anime: animeTopInfoStruct)
+    func setAnimeVidSearch(anime: AnimeDetails)
+    func setAnimeVidTop(anime: TopStruct)
     
 }
 
@@ -20,12 +21,25 @@ public class AnimeVideoCell: UITableViewCell, AnimeVideoCellProtocol {
     
     @IBOutlet weak var videoTitleLabel: UILabel!
     
-   public func setAnimeVid(anime: animeTopInfoStruct) {
+   public func setAnimeVidSearch(anime: AnimeDetails) {
     //videoImageView.image = UIImage(named: anime.top.image_url!)
-        videoTitleLabel.text = anime.top.title
-    if let profileImageUrl = anime.top.image_url {
-        videoImageView.loadImageUsingUrlString(urlString: profileImageUrl)
-      }
+    
+        videoTitleLabel.text = anime.title
+        if let profileImageUrl = anime.image_url {
+            videoImageView.loadImageUsingUrlString(urlString: profileImageUrl)
+          }
+    
+
     }
+    public func setAnimeVidTop(anime: TopStruct) {
+     //videoImageView.image = UIImage(named: anime.top.image_url!)
+     
+         videoTitleLabel.text = anime.title
+         if let profileImageUrl = anime.image_url {
+             videoImageView.loadImageUsingUrlString(urlString: profileImageUrl)
+           }
+     
+
+     }
 
 }
