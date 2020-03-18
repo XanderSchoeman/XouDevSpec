@@ -14,30 +14,6 @@ extension UIColor {
     }
 }
 
-//Going to be added as a pod module
-public extension UIView {
-    //constraints minimized #lessCode
-    func addConstraintsWithFormats(format: String, views: UIView...) {
-        var viewsDictionary = [String: UIView]()
-        for(index, view) in views.enumerated() {
-            let key = "v\(index)"
-            view.translatesAutoresizingMaskIntoConstraints = false
-            viewsDictionary[key] = view
-        }
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: format,
-                                                      options: NSLayoutConstraint.FormatOptions(),
-                                                      metrics: nil, views: viewsDictionary))
-    }
-}
-
-/*extension UINavigationController {
-   open override var preferredStatusBarStyle: UIStatusBarStyle {
-      return topViewController?.preferredStatusBarStyle ?? .default
-   }
-}*/
-
-
-
 public extension UIImageView {
     func loadImageUsingUrlString(urlString: String) {
         let url = URL(string: urlString)
