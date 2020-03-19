@@ -28,10 +28,11 @@ public struct ApiCallerModel {
     
     
     public  func getAnimeData(completetionHandler: @escaping(Result<[AnimeDetails], AnimeError>) -> Void) {
+    
+        var request = URLRequest(url: NSURL(string:  "https://jikan1.p.rapidapi.com/search/anime?q=\(searchText)")! as URL,
+            cachePolicy: .useProtocolCachePolicy,
+        timeoutInterval: 10.0)
         
-        let request = NSMutableURLRequest(url: NSURL(string:  "https://jikan1.p.rapidapi.com/search/anime?q=\(searchText)")! as URL,
-                                                cachePolicy: .useProtocolCachePolicy,
-                                            timeoutInterval: 10.0)
 
         request.httpMethod = "GET"
         request.allHTTPHeaderFields = headers
