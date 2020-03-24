@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 NS_ASSUME_NONNULL_BEGIN
-
 @interface ObjCAnimeClass : NSObject
 -(instancetype)initWith:(NSString *)mal_id :(NSString *)url :(NSString *)image_url :(NSString *)title :(NSString *)airing :(NSString *)synopsis :(NSString *)type :(NSString *)episodes :(NSString *)score :(NSString *)start_date :(NSString *)end_date :(NSString *)members :(NSString *)rated;
 @property NSString *mal_id;
@@ -24,12 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property NSString *end_date;
 @property NSString *members;
 @property NSString *rated;
-
 -(NSString*)AnimeInfoString;
-
-
 @end
-
 NS_ASSUME_NONNULL_END
-
 //TODO

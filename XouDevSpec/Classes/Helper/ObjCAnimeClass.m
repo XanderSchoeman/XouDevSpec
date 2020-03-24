@@ -29,9 +29,7 @@
         self.rated = rated;
     } return self;
 }
-
 - (NSString *)AnimeInfoString{
-    
     return [NSString stringWithFormat:@"-%@- \nEpisodes: %@ | Score: %@",self.title , self.episodes , self.score];
 }
 //TODO
