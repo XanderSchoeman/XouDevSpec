@@ -13,6 +13,8 @@ public class AnimeTableViewModel {
 //   public func getAnimeTopDataFromApiCaller() {
 //        apiHandlerObj.getAnimeTopData()
 //    }
+
+    
     public init() {
     }
 }
