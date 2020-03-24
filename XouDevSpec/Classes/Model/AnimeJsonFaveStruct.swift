@@ -1,17 +1,17 @@
 //
-//  AnimeJsonStruct.swift
+//  AnimeJsonFaveStruct.swift
 //  XouDevSpec
 //
-//  Created by Xander Schoeman on 2020/03/17.
+//  Created by Xander Schoeman on 2020/03/22.
 //
 
 import Foundation
 
-public struct animeInfo: Decodable {
+public struct FaveAnimeInfo: Decodable {
     public var request_hash: String?
     public var request_cached: Bool?
     public var request_cache_expiry: Int?
-    public var results = [AnimeDetails]()
+    public var results = [FaveAnimeDetails]()
     public var last_page : Int?
 
     public init() {
@@ -25,7 +25,7 @@ public struct animeInfo: Decodable {
 }
 
 
-public struct AnimeDetails: Decodable {
+public struct FaveAnimeDetails: Decodable {
     public var mal_id: Int?
     public  var url: String?
     public var image_url: String?
@@ -59,5 +59,3 @@ public struct AnimeDetails: Decodable {
 
     }
 }
-
-
