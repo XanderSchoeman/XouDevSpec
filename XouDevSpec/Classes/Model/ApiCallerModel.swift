@@ -86,7 +86,35 @@ public struct ApiCallerModel {
 
         dataTask.resume()
       }
+    public  func getMangaData(completetionHandler: @escaping(Result<[MangaDetails], AnimeError>) -> Void) {
+    
+        var request = URLRequest(url: NSURL(string:  "https://jikan1.p.rapidapi.com/search/anime?q=\(searchText)")! as URL,
+            cachePolicy: .useProtocolCachePolicy,
+        timeoutInterval: 10.0)
+        
 
+        request.httpMethod = "GET"
+        request.allHTTPHeaderFields = headers
+
+        let session = URLSession.shared
+        let dataTask = session.dataTask(with: request as URLRequest) { data, _, _ in
+            guard let jsonData = data else {
+                completetionHandler(.failure(.noDataAvailable))
+                return
+            }
+            do {
+                let decoder = JSONDecoder()
+                let response = try decoder.decode(mangaInfo.self, from: jsonData)
+                let responseDetails = response.results
+                completetionHandler(.success(responseDetails))
+                
+            } catch {
+                completetionHandler(.failure(.cannotProcessData))
+            }
+        }
+
+        dataTask.resume()
+      }
 
 }
 

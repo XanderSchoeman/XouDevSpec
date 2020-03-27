@@ -1,17 +1,17 @@
 //
-//  MangaSearchStruct.swift
+//  MangaFaveStruct.swift
 //  XouDevSpec
 //
-//  Created by Xander Schoeman on 2020/03/24.
+//  Created by Xander Schoeman on 2020/03/26.
 //
 
 import Foundation
 
-    public struct mangaInfo: Decodable {
+    public struct faveMangaInfo: Decodable {
         public var request_hash: String?
         public var request_cached: Bool?
         public var request_cache_expiry: Int?
-        public var results = [MangaDetails]()
+        public var results = [faveMangaDetails]()
         public var last_page : Int?
 
         public init() {
@@ -24,7 +24,7 @@ import Foundation
 
     }
 
-    public struct MangaDetails: Decodable {
+    public struct faveMangaDetails: Decodable {
         public var mal_id: Int?
         public  var url: String?
         public var image_url: String?
