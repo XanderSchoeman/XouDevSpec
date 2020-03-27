@@ -10,6 +10,7 @@ import Foundation
 public enum AnimeError: Error {
     case noDataAvailable
     case cannotProcessData
+    case ProblemWithUrl
 }
 
 public struct ApiCallerModel {
@@ -28,8 +29,12 @@ public struct ApiCallerModel {
     
     
     public  func getAnimeData(completetionHandler: @escaping(Result<[AnimeDetails], AnimeError>) -> Void) {
+        
+        guard let url = URL(string: "https://jikan1.p.rapidapi.com/search/anime?q=\(searchText)") else {
+            return
+        }
     
-        var request = URLRequest(url: NSURL(string:"https://jikan1.p.rapidapi.com/search/anime?q=\(searchText)")! as URL,
+        var request = URLRequest(url: url,
             cachePolicy: .useProtocolCachePolicy,
         timeoutInterval: 10.0)
         
@@ -60,9 +65,15 @@ public struct ApiCallerModel {
     
     public  func getAnimeTopData(completetionHandler: @escaping(Result<[TopStruct], AnimeError>) -> Void) {
         
-        let request = NSMutableURLRequest(url: NSURL(string:  "https://jikan1.p.rapidapi.com/top/anime/1/upcoming")! as URL,
-                                                cachePolicy: .useProtocolCachePolicy,
-                                            timeoutInterval: 10.0)
+        
+            guard let url = URL(string: "https://jikan1.p.rapidapi.com/top/anime/1/upcoming") else {
+                return
+            }
+        
+            var request = URLRequest(url: url,
+                cachePolicy: .useProtocolCachePolicy,
+            timeoutInterval: 10.0)
+
 
         request.httpMethod = "GET"
         request.allHTTPHeaderFields = headers
@@ -87,10 +98,14 @@ public struct ApiCallerModel {
         dataTask.resume()
       }
     public  func getMangaData(completetionHandler: @escaping(Result<[MangaDetails], AnimeError>) -> Void) {
-    
-        var request = URLRequest(url: NSURL(string:"https://jikan1.p.rapidapi.com/search/manga?q=\(searchText)")! as URL,
-            cachePolicy: .useProtocolCachePolicy,
-        timeoutInterval: 10.0)
+        
+            guard let url = URL(string:"https://jikan1.p.rapidapi.com/search/manga?q=\(searchText)") else {
+                return
+            }
+        
+            var request = URLRequest(url: url,
+                cachePolicy: .useProtocolCachePolicy,
+            timeoutInterval: 10.0)
         
 
         request.httpMethod = "GET"
