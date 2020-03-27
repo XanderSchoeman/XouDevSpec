@@ -29,7 +29,7 @@ public struct ApiCallerModel {
     
     public  func getAnimeData(completetionHandler: @escaping(Result<[AnimeDetails], AnimeError>) -> Void) {
     
-        var request = URLRequest(url: NSURL(string:  "https://jikan1.p.rapidapi.com/search/anime?q=\(searchText)")! as URL,
+        var request = URLRequest(url: NSURL(string:"https://jikan1.p.rapidapi.com/search/anime?q=\(searchText)")! as URL,
             cachePolicy: .useProtocolCachePolicy,
         timeoutInterval: 10.0)
         
@@ -88,7 +88,7 @@ public struct ApiCallerModel {
       }
     public  func getMangaData(completetionHandler: @escaping(Result<[MangaDetails], AnimeError>) -> Void) {
     
-        var request = URLRequest(url: NSURL(string:  "https://jikan1.p.rapidapi.com/search/anime?q=\(searchText)")! as URL,
+        var request = URLRequest(url: NSURL(string:"https://jikan1.p.rapidapi.com/search/manga?q=\(searchText)")! as URL,
             cachePolicy: .useProtocolCachePolicy,
         timeoutInterval: 10.0)
         
