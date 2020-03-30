@@ -10,14 +10,15 @@ import Foundation
 public enum AnimeError: Error {
     case noDataAvailable
     case cannotProcessData
+    case problemWithUrl
 }
 
-public struct ApiCallerModel {
+public struct ApiCallerRepo {
     let headers = [
         "x-rapidapi-host": "jikan1.p.rapidapi.com",
         "x-rapidapi-key": "844aa4143cmsha9162c362813b50p169716jsn9c6c8269713a"
          ]
-    let searchText: String
+    var searchText: String?
     
     
     public init(SearchText: String) {
@@ -25,11 +26,19 @@ public struct ApiCallerModel {
         
     }
     
+    public init() {
+        
+    }
+    
     
     
     public  func getAnimeData(completetionHandler: @escaping(Result<[AnimeDetails], AnimeError>) -> Void) {
+        
+        guard let url = URL(string: "https://jikan1.p.rapidapi.com/search/anime?q=\(searchText ?? "Top")") else {
+            return
+        }
     
-        var request = URLRequest(url: NSURL(string:  "https://jikan1.p.rapidapi.com/search/anime?q=\(searchText)")! as URL,
+        var request = URLRequest(url: url,
             cachePolicy: .useProtocolCachePolicy,
         timeoutInterval: 10.0)
         
@@ -60,9 +69,15 @@ public struct ApiCallerModel {
     
     public  func getAnimeTopData(completetionHandler: @escaping(Result<[TopStruct], AnimeError>) -> Void) {
         
-        let request = NSMutableURLRequest(url: NSURL(string:  "https://jikan1.p.rapidapi.com/top/anime/1/upcoming")! as URL,
-                                                cachePolicy: .useProtocolCachePolicy,
-                                            timeoutInterval: 10.0)
+        
+            guard let url = URL(string: "https://jikan1.p.rapidapi.com/top/anime/1/upcoming") else {
+                return
+            }
+        
+            var request = URLRequest(url: url,
+                cachePolicy: .useProtocolCachePolicy,
+            timeoutInterval: 10.0)
+
 
         request.httpMethod = "GET"
         request.allHTTPHeaderFields = headers
@@ -86,7 +101,39 @@ public struct ApiCallerModel {
 
         dataTask.resume()
       }
+    public  func getMangaData(completetionHandler: @escaping(Result<[MangaDetails], AnimeError>) -> Void) {
+        
+        guard let url = URL(string:"https://jikan1.p.rapidapi.com/search/manga?q=\(searchText ?? "")") else {
+                return
+            }
+        
+            var request = URLRequest(url: url,
+                cachePolicy: .useProtocolCachePolicy,
+            timeoutInterval: 10.0)
+        
 
+        request.httpMethod = "GET"
+        request.allHTTPHeaderFields = headers
+
+        let session = URLSession.shared
+        let dataTask = session.dataTask(with: request as URLRequest) { data, _, _ in
+            guard let jsonData = data else {
+                completetionHandler(.failure(.noDataAvailable))
+                return
+            }
+            do {
+                let decoder = JSONDecoder()
+                let response = try decoder.decode(mangaInfo.self, from: jsonData)
+                let responseDetails = response.results
+                completetionHandler(.success(responseDetails))
+                
+            } catch {
+                completetionHandler(.failure(.cannotProcessData))
+            }
+        }
+
+        dataTask.resume()
+      }
 
 }
 

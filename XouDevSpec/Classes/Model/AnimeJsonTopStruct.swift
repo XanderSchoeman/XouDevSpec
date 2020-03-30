@@ -29,7 +29,7 @@ public struct TopStruct: Decodable {
     public var start_date: String?
     public var end_date: String?
     public var members: Int?
-    public var score: Int?
+    public var score: Double?
     
     public init( ){
 
