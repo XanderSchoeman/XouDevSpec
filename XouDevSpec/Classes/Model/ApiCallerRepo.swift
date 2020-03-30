@@ -10,7 +10,7 @@ import Foundation
 public enum AnimeError: Error {
     case noDataAvailable
     case cannotProcessData
-    case ProblemWithUrl
+    case problemWithUrl
 }
 
 public struct ApiCallerRepo {
