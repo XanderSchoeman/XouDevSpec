@@ -7,17 +7,28 @@
 
 import UIKit
 
-protocol AnimeVideoCellProtocol : class {
-    func setAnimeVidSearch(anime: AnimeDetails)
-    func setAnimeVidTop(anime: TopStruct)
-    func setMangaSearch(manga: MangaDetails)
-}
-
-public class AnimeVideoCell: UITableViewCell, AnimeVideoCellProtocol {
+public class AnimeVideoCell: UITableViewCell {
 
     @IBOutlet weak var videoImageView: UIImageView!
     @IBOutlet weak var videoTitleLabel: UILabel!
 
+   public var animeViewModel: AnimeTableViewModel! {
+        didSet {
+            videoTitleLabel.text = animeViewModel.title
+            if let ImageUrl = animeViewModel.image_url {
+              videoImageView.loadImageUsingUrlString(urlString: ImageUrl)
+            }
+        }
+    }
+    
+    public var mangaViewModel: MangaTableViewModel! {
+         didSet {
+             videoTitleLabel.text = mangaViewModel.title
+             if let ImageUrl = mangaViewModel.image_url {
+               videoImageView.loadImageUsingUrlString(urlString: ImageUrl)
+             }
+         }
+     }
     
    public func setAnimeVidSearch(anime: AnimeDetails) {
         videoTitleLabel.text = anime.title

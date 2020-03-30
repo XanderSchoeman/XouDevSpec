@@ -13,12 +13,12 @@ public enum AnimeError: Error {
     case ProblemWithUrl
 }
 
-public struct ApiCallerModel {
+public struct ApiCallerRepo {
     let headers = [
         "x-rapidapi-host": "jikan1.p.rapidapi.com",
         "x-rapidapi-key": "844aa4143cmsha9162c362813b50p169716jsn9c6c8269713a"
          ]
-    let searchText: String
+    var searchText: String?
     
     
     public init(SearchText: String) {
@@ -26,11 +26,15 @@ public struct ApiCallerModel {
         
     }
     
+    public init() {
+        
+    }
+    
     
     
     public  func getAnimeData(completetionHandler: @escaping(Result<[AnimeDetails], AnimeError>) -> Void) {
         
-        guard let url = URL(string: "https://jikan1.p.rapidapi.com/search/anime?q=\(searchText)") else {
+        guard let url = URL(string: "https://jikan1.p.rapidapi.com/search/anime?q=\(searchText ?? "Top")") else {
             return
         }
     
@@ -99,7 +103,7 @@ public struct ApiCallerModel {
       }
     public  func getMangaData(completetionHandler: @escaping(Result<[MangaDetails], AnimeError>) -> Void) {
         
-            guard let url = URL(string:"https://jikan1.p.rapidapi.com/search/manga?q=\(searchText)") else {
+        guard let url = URL(string:"https://jikan1.p.rapidapi.com/search/manga?q=\(searchText ?? "")") else {
                 return
             }
         
