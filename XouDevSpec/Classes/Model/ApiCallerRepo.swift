@@ -19,11 +19,15 @@ public struct ApiCallerRepo {
         "x-rapidapi-key": "844aa4143cmsha9162c362813b50p169716jsn9c6c8269713a"
          ]
     var searchText: String?
-    
+    var genre: String?
     
     public init(SearchText: String) {
         self.searchText = SearchText
         
+    }
+    public init(SearchText: String, GenreSelected: String) {
+        self.searchText = SearchText
+        self.genre = GenreSelected
     }
     
     public init() {
@@ -34,7 +38,7 @@ public struct ApiCallerRepo {
     
     public  func getAnimeData(completetionHandler: @escaping(Result<[AnimeDetails], AnimeError>) -> Void) {
         
-        guard let url = URL(string: "https://jikan1.p.rapidapi.com/search/anime?q=\(searchText ?? "Top")") else {
+        guard let url = URL(string: "https://jikan1.p.rapidapi.com/search/anime?\(genre ?? "")q=\(searchText ?? "Top")") else {
             return
         }
     
@@ -103,7 +107,7 @@ public struct ApiCallerRepo {
       }
     public  func getMangaData(completetionHandler: @escaping(Result<[MangaDetails], AnimeError>) -> Void) {
         
-        guard let url = URL(string:"https://jikan1.p.rapidapi.com/search/manga?q=\(searchText ?? "")") else {
+        guard let url = URL(string:"https://jikan1.p.rapidapi.com/search/manga?\(genre ?? "")q=\(searchText ?? "")") else {
                 return
             }
         

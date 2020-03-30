@@ -32,18 +32,5 @@ public class AnimeFavouriteCell: UITableViewCell {
               }
           }
       }
-    
-    public func setAnimeVidFaves(anime: AnimeDetails) {
-         lblFaveAnime.text = anime.title
-         if let profileImageUrl = anime.image_url {
-             imgFaveAnime.loadImageUsingUrlString(urlString: profileImageUrl)
-           }
-     }
-    public func setMangaFaves(manga: MangaDetails) {
-         lblManga.text = manga.title
-         if let profileImageUrl = manga.image_url {
-             imgManga.loadImageUsingUrlString(urlString: profileImageUrl)
-           }
-     }
 
 }

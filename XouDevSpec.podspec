@@ -36,9 +36,10 @@ TODO: Add long description of the pod here.
   # s.resource_bundles = {
   #   'XouDevSpec' => ['XouDevSpec/Assets/*.png']
   # }
-
+   s.static_framework = true
    s.public_header_files = 'XouDevSpec/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'
   s.dependency 'Alamofire'
+  s.dependency 'Firebase/Analytics'
 end
