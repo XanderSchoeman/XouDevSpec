@@ -1,9 +1,8 @@
 //
 //  Extensions.swift
-//  XouTube
+//  XouDevSpec
 //
-//  Created by Xander Schoeman on 2020/02/19.
-//  Copyright © 2020 Xander Schoeman. All rights reserved.
+//  Created by Xander Schoeman on 2020/03/31.
 //
 
 import UIKit
