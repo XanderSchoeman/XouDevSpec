@@ -9,6 +9,7 @@ import Foundation
 
 
 public struct XouBaseApiCalls {
+    var urls = UrlStrings()
 
     public init() {
     }
@@ -16,7 +17,7 @@ public struct XouBaseApiCalls {
     public  func getUsers(completetionHandler: @escaping(Result<[User], AnimeError>) -> Void) {
         
         
-            guard let url = URL(string: "https://xoubase.herokuapp.com/users") else {
+        guard let url = URL(string: urls.getUsersUrl) else {
                 return
             }
         
