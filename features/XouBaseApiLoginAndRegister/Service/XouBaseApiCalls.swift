@@ -37,8 +37,7 @@ public struct XouBaseApiCalls {
             do {
                 let decoder = JSONDecoder()
                 let response = try decoder.decode([User].self, from: jsonData)
-                let responseDetails = response
-                completetionHandler(.success(responseDetails))
+                completetionHandler(.success(response))
                 
             } catch {
                 completetionHandler(.failure(.cannotProcessData))
