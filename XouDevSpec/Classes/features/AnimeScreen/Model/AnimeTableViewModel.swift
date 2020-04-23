@@ -9,9 +9,9 @@ import UIKit
 import Foundation
 
 
-public struct AnimeTableViewModel {
+public struct AnimeTableModel {
 
-    //var topAnimeObj: TopStruct?
+
       public var title: String?
       public var mal_id: Int?
       public var rank: Int?
@@ -39,15 +39,7 @@ public struct AnimeTableViewModel {
         self.score = topAnime.score
         self.start_date = topAnime.start_date
         self.end_date = topAnime.end_date
-        
-        //Leaving this code commented because I have some questions:
-        //Why does this contain no values?
-        //self.topAnimeObj?.title = topAnime.title
-        //self.topAnimeObj?.title = topAnime.image_url
-        //==============================================
-        // If i use this then it works, but then it defeats the purpose of dependency injection in the init.
-        //self.title = topAnimeObj?.title
-        //self.imageUrl = topAnimeObj?.title
+
     }
     
     public init(SearchedAnime: AnimeDetails) {

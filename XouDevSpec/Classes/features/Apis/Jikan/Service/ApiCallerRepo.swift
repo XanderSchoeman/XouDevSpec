@@ -13,7 +13,14 @@ public enum AnimeError: Error {
     case problemWithUrl
 }
 
-public struct ApiCallerRepo {
+
+
+
+
+
+public class ApiCallerRepo: ApiJikanCallerProtocol {
+
+    
     let headers = [
         "x-rapidapi-host": "jikan1.p.rapidapi.com",
         "x-rapidapi-key": "844aa4143cmsha9162c362813b50p169716jsn9c6c8269713a"
@@ -34,6 +41,10 @@ public struct ApiCallerRepo {
         
     }
     
+    public func initStrings(search: String, genre: String){
+        self.searchText = search
+        self.genre = genre
+    }
     
     
     public  func getAnimeData(completetionHandler: @escaping(Result<[AnimeDetails], AnimeError>) -> Void) {
