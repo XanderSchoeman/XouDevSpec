@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class MangaTableViewModel {
+public class MangaTableModel {
     
       public var mal_id: Int?
       public  var url: String?

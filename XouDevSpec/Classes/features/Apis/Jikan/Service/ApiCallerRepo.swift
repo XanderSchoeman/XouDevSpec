@@ -13,7 +13,14 @@ public enum AnimeError: Error {
     case problemWithUrl
 }
 
-public struct ApiCallerRepo {
+
+
+
+
+
+public class ApiCallerRepo: ApiJikanCallerProtocol {
+
+    
     let headers = [
         "x-rapidapi-host": "jikan1.p.rapidapi.com",
         "x-rapidapi-key": "844aa4143cmsha9162c362813b50p169716jsn9c6c8269713a"
@@ -34,6 +41,10 @@ public struct ApiCallerRepo {
         
     }
     
+    public func initStrings(search: String, genre: String){
+        self.searchText = search
+        self.genre = genre
+    }
     
     
     public  func getAnimeData(completetionHandler: @escaping(Result<[AnimeDetails], AnimeError>) -> Void) {
@@ -58,7 +69,7 @@ public struct ApiCallerRepo {
             }
             do {
                 let decoder = JSONDecoder()
-                let response = try decoder.decode(animeInfo.self, from: jsonData)
+                let response = try decoder.decode(AnimeInfo.self, from: jsonData)
                 let responseDetails = response.results
                 completetionHandler(.success(responseDetails))
                 
@@ -71,7 +82,7 @@ public struct ApiCallerRepo {
       }
     
     
-    public  func getAnimeTopData(completetionHandler: @escaping(Result<[TopStruct], AnimeError>) -> Void) {
+    public  func getAnimeTopData(completetionHandler: @escaping(Result<[TopAnime], AnimeError>) -> Void) {
         
         
             guard let url = URL(string: "https://jikan1.p.rapidapi.com/top/anime/1/upcoming") else {
@@ -94,7 +105,7 @@ public struct ApiCallerRepo {
             }
             do {
                 let decoder = JSONDecoder()
-                let response = try decoder.decode(animeTopInfoStruct.self, from: jsonData)
+                let response = try decoder.decode(AnimeTopInfo.self, from: jsonData)
                 let responseDetails = response.top
                 completetionHandler(.success(responseDetails))
                 
@@ -127,7 +138,7 @@ public struct ApiCallerRepo {
             }
             do {
                 let decoder = JSONDecoder()
-                let response = try decoder.decode(mangaInfo.self, from: jsonData)
+                let response = try decoder.decode(MangaInfo.self, from: jsonData)
                 let responseDetails = response.results
                 completetionHandler(.success(responseDetails))
                 
