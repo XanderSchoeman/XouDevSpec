@@ -26,7 +26,7 @@ public struct AnimeTableModel {
       public var airing: Bool?
       public var synopsis: String?
       public var rated: String?
-    public init(topAnime: TopStruct) {
+    public init(topAnime: TopAnime) {
         
         self.mal_id = topAnime.mal_id
         self.title = topAnime.title

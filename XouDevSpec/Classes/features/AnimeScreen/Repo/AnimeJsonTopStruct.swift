@@ -3,18 +3,18 @@
 
 import Foundation
 
-public struct animeTopInfoStruct: Decodable {
+public struct AnimeTopInfo: Decodable {
     public var request_hash: String = ""
     public var request_cached: Bool = true
     public var request_cache_expiry: Int? = 0
-    public var top = [TopStruct]()
+    public var top = [TopAnime]()
     
     public init() {
     }
         
 }
 
-public struct TopStruct: Decodable {
+public struct TopAnime: Decodable {
     public var mal_id: Int = 0
     public var rank: Int? = 0
   public var title: String? = ""

@@ -9,5 +9,5 @@ import Foundation
 
 public protocol AnimeViewProtocol: class {
     func animeRetrieveData(animeDetails: [AnimeDetails])
-    func animeRetrieveTopData(animeDetails: [TopStruct])
+    func animeRetrieveTopData(animeDetails: [TopAnime])
 }

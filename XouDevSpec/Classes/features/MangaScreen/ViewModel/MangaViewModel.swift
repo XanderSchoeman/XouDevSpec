@@ -34,9 +34,8 @@ extension MangaViewModel: MangaViewModelProtocol {
             switch result {
             case .failure( let error):
                 print(error)
-            case .success(let animes):
-                self?.manga = animes
-                self?.view?.mangaDataRetrieve(mangaDetails: animes)
+            case .success(let manga):
+                self?.view?.mangaDataRetrieve(mangaDetails: manga)
             }
         }
     }

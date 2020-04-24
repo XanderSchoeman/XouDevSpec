@@ -69,7 +69,7 @@ public class ApiCallerRepo: ApiJikanCallerProtocol {
             }
             do {
                 let decoder = JSONDecoder()
-                let response = try decoder.decode(animeInfo.self, from: jsonData)
+                let response = try decoder.decode(AnimeInfo.self, from: jsonData)
                 let responseDetails = response.results
                 completetionHandler(.success(responseDetails))
                 
@@ -82,7 +82,7 @@ public class ApiCallerRepo: ApiJikanCallerProtocol {
       }
     
     
-    public  func getAnimeTopData(completetionHandler: @escaping(Result<[TopStruct], AnimeError>) -> Void) {
+    public  func getAnimeTopData(completetionHandler: @escaping(Result<[TopAnime], AnimeError>) -> Void) {
         
         
             guard let url = URL(string: "https://jikan1.p.rapidapi.com/top/anime/1/upcoming") else {
@@ -105,7 +105,7 @@ public class ApiCallerRepo: ApiJikanCallerProtocol {
             }
             do {
                 let decoder = JSONDecoder()
-                let response = try decoder.decode(animeTopInfoStruct.self, from: jsonData)
+                let response = try decoder.decode(AnimeTopInfo.self, from: jsonData)
                 let responseDetails = response.top
                 completetionHandler(.success(responseDetails))
                 
@@ -138,7 +138,7 @@ public class ApiCallerRepo: ApiJikanCallerProtocol {
             }
             do {
                 let decoder = JSONDecoder()
-                let response = try decoder.decode(mangaInfo.self, from: jsonData)
+                let response = try decoder.decode(MangaInfo.self, from: jsonData)
                 let responseDetails = response.results
                 completetionHandler(.success(responseDetails))
                 

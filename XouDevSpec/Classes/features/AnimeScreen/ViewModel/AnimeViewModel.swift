@@ -13,8 +13,6 @@ public protocol AnimeViewModelProtocol {
 }
 
 public class AnimeViewModel {
-    var anime = [AnimeDetails]()
-    var topAnime = [TopStruct]()
     weak var view: AnimeViewProtocol?
     var Repo: ApiJikanCallerProtocol
     
@@ -33,7 +31,6 @@ extension AnimeViewModel: AnimeViewModelProtocol {
             case .failure( let error):
                 print(error)
             case .success(let animes):
-                self?.anime = animes
                 self?.view?.animeRetrieveData(animeDetails: animes)
             }
         }
@@ -44,7 +41,6 @@ extension AnimeViewModel: AnimeViewModelProtocol {
             case .failure( let error):
                 print(error)
             case .success(let animes):
-                self?.topAnime = animes
                 self?.view?.animeRetrieveTopData(animeDetails: animes)
             }
         }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-    public struct mangaInfo: Decodable {
+    public struct MangaInfo: Decodable {
         public var request_hash: String = ""
         public var request_cached: Bool = true
         public var request_cache_expiry: Int = 0

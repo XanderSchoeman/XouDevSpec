@@ -13,7 +13,7 @@ public protocol ApiJikanCallerProtocol {
     
     func getMangaData(completetionHandler: @escaping(Result<[MangaDetails], AnimeError>) -> Void)
     
-   func  getAnimeTopData(completetionHandler: @escaping(Result<[TopStruct], AnimeError>) -> Void)
+   func  getAnimeTopData(completetionHandler: @escaping(Result<[TopAnime], AnimeError>) -> Void)
     
     func initStrings(search: String, genre: String)
     

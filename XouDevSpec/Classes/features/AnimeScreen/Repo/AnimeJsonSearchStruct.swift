@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct animeInfo: Decodable {
+public struct AnimeInfo: Decodable {
     public var request_hash: String = ""
     public var request_cached: Bool = true
     public var request_cache_expiry: Int = 0
@@ -16,7 +16,6 @@ public struct animeInfo: Decodable {
 
     public init() {
     }
-
 }
 
 public struct AnimeDetails: Decodable {
