@@ -6,8 +6,7 @@
 //
 import Foundation
 
-//commented for a test when pushing
-public struct XouBaseApiCalls {
+public struct XouBaseApiCalls: XouBaseApiServiceProtocol {
     var urls = UrlStrings()
 
     public init() {
@@ -70,6 +69,45 @@ public struct XouBaseApiCalls {
                     do {
                         let messageData = try JSONDecoder().decode(User.self, from: jsonData)
                         completetionHandler(.success(messageData))
+                    } catch {
+                        completetionHandler(.failure(.noDataAvailable))
+                    }
+                }
+                dataTask.resume()
+            } catch {
+                completetionHandler(.failure(.cannotProcessData))
+            }
+        }
+    public  func loginUser(theLoginModel: Login,completetionHandler: @escaping(Result<User, AnimeError>) -> Void) {
+
+            do {
+                guard let url = URL(string: urls.loginUserUrl) else {
+                        return
+                    }
+                  
+                  var request = URLRequest(url: url)
+
+                  
+                request.httpMethod = "POST"
+                  request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+                  request.httpBody = try JSONEncoder().encode(theLoginModel)
+
+                let session = URLSession.shared
+                let dataTask = session.dataTask(with: request as URLRequest) { data, response, _ in
+                  guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200,
+                      let jsonData = data else {
+                          completetionHandler(.failure(.cannotProcessData))
+                          return
+                  }
+                    do {
+                        let messageData = try JSONDecoder().decode([User].self, from: jsonData)
+                        if (messageData.count == 1) {
+                            completetionHandler(.success(messageData[0]))
+                        } else {
+                            completetionHandler(.failure(.cannotProcessData))
+                        }
+                        
+                        
                     } catch {
                         completetionHandler(.failure(.noDataAvailable))
                     }

@@ -22,7 +22,7 @@ public struct User: Codable {
     public init() {
     }
     
-    public init (gender: String?, password: String, profileImage: String, age: Int, favouriteCount: Int, fullName: String, username: String, email: String, genrePref: String) {
+    public init (gender: String?, password: String, profileImage: String, age: Int, fullName: String, username: String, email: String, genrePref: String) {
         self.username = username
         self.password = password
         self.profileImage = profileImage
@@ -30,12 +30,11 @@ public struct User: Codable {
         self.email = email
         self.gender = gender
         self.age = age
-        self.favouriteCount = favouriteCount
         self.genrePref = genrePref
     }
 }
 
-public struct UserTest: Codable {
+public struct Login: Codable {
     public var id: String = ""
     public  var username: String = ""
     public var password: String = ""

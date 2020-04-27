@@ -10,6 +10,7 @@ public struct UrlStrings {
     public let getUsersUrl = "https://xoubase.herokuapp.com/users"
     public let getUsersLocalUrl = "http://localhost:8080/users"
     public let registerUserUrl = "http://localhost:8080/send"
+    public let loginUserUrl = "http://localhost:8080/authenticate"
 
     public init() {
     }
