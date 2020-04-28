@@ -28,5 +28,24 @@ public extension UIImageView {
     }
 }
 
+var backgroundView: UIView?
+public extension UIViewController {
+     func showSpinner() {
+        backgroundView = UIView(frame: self.view.bounds)
+        backgroundView?.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
+        
+        let activityIndicator = UIActivityIndicatorView(style: .large)
+        activityIndicator.center = backgroundView!.center
+        activityIndicator.startAnimating()
+        backgroundView?.addSubview(activityIndicator)
+        self.view.addSubview(backgroundView!)
+        
+    }
+    func removeSpinner() {
+        backgroundView?.removeFromSuperview()
+        backgroundView = nil
+    }
+}
+
 
 
