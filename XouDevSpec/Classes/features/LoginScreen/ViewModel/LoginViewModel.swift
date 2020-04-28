@@ -30,7 +30,7 @@ extension LoginViewModel: LoginViewModelProtocol {
         Repo.loginUser(theLoginModel: withUser, completetionHandler: { result in
             switch result {
             case .success(let user):
-                print("Succes the user: \(user.username) has been logged in")
+                print("Success the user: \(user.username) has been logged in")
                 loggedInUser = user
                 isUserLoggedIn = true
                 self.view?.retrieveLoginData(with: user)

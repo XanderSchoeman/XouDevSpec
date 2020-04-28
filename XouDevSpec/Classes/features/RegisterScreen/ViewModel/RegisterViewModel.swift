@@ -27,7 +27,7 @@ extension RegisterViewModel: RegisterViewModelProtocol {
         Repo.registerUser(theUser: withUser, completetionHandler: { result in
             switch result {
             case .success(let user):
-                print("Succes the user: \(user.username) has been registered")
+                print("Success the user: \(user.username) has been registered")
             case .failure(let error):
                 print("An error has occured: \(error)")
             }
