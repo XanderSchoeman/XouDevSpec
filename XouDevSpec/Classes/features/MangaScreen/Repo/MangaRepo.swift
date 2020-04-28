@@ -36,6 +36,11 @@ import Foundation
 
         public init() {
         }
+        public init(title: String, imageUrl: String, type: String) {
+            self.title = title
+            self.image_url = imageUrl
+            self.type = type
+        }
     }
 
 
