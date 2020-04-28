@@ -33,9 +33,15 @@ extension LoginViewModel: LoginViewModelProtocol {
                 print("Success the user: \(user.username) has been logged in")
                 loggedInUser = user
                 isUserLoggedIn = true
-                self.view?.retrieveLoginData(with: user)
+                self.view?.retrievedLoginData(with: user)
+                DispatchQueue.main.async {
+                    self.view?.notifyUserOnSuccess()
+                }
             case .failure(let error):
                 print("An error has occured: \(error)")
+                DispatchQueue.main.async {
+                    self.view?.notifyUserOnError()
+                }
             }
         })
     }

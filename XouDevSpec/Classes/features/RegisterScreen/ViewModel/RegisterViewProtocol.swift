@@ -8,5 +8,7 @@
 import Foundation
 
 public protocol RegisterViewProtocol: class {
-     func retrieveRegisterData(with: User)
+     func retrievedRegisterData(with: User)
+     func notifyUserOnError()
+     func notifyUserOnSuccess()
 }

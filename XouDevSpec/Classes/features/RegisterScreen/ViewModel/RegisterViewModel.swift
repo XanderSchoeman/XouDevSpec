@@ -28,8 +28,15 @@ extension RegisterViewModel: RegisterViewModelProtocol {
             switch result {
             case .success(let user):
                 print("Success the user: \(user.username) has been registered")
+                DispatchQueue.main.async {
+                    self.view?.notifyUserOnSuccess()
+                }
             case .failure(let error):
                 print("An error has occured: \(error)")
+                DispatchQueue.main.async {
+                    self.view?.notifyUserOnError()
+                }
+                
             }
         })
     }

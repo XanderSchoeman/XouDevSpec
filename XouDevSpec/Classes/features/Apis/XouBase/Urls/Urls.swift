@@ -8,9 +8,8 @@ import Foundation
 
 public struct UrlStrings {
     public let getUsersUrl = "https://xoubase.herokuapp.com/users"
-    public let getUsersLocalUrl = "http://localhost:8080/users"
-    public let registerUserUrl = "http://localhost:8080/send"
-    public let loginUserUrl = "http://localhost:8080/authenticate"
+    public let registerUserUrl = "https://xoubase.herokuapp.com/send"
+    public let loginUserUrl = "https://xoubase.herokuapp.com/authenticate"
 
     public init() {
     }

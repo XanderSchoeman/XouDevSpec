@@ -15,7 +15,7 @@ public struct User: Codable {
     public var age: Int = 0
     public var favouriteCount: Int = 0
     public var fullName: String = ""
-    public  var username: String = ""
+    public var username: String = ""
     public var email: String = ""
     public var genrePref: String = ""
     
@@ -36,7 +36,7 @@ public struct User: Codable {
 
 public struct Login: Codable {
     public var id: String = ""
-    public  var username: String = ""
+    public var username: String = ""
     public var password: String = ""
 
 

@@ -8,5 +8,7 @@
 import Foundation
 
 public protocol LoginViewProtocol: class {
-    func retrieveLoginData(with: User)
+    func retrievedLoginData(with: User)
+    func notifyUserOnError()
+    func notifyUserOnSuccess()
 }

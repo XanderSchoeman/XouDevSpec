@@ -8,14 +8,15 @@ import Foundation
 
 public struct XouBaseApiCalls: XouBaseApiServiceProtocol {
     var urls = UrlStrings()
+    var httpMethods = HTTPmethods()
 
     public init() {
     }
     
-    public  func getUsers(completetionHandler: @escaping(Result<[User], AnimeError>) -> Void) {
+    public func getUsers(completetionHandler: @escaping(Result<[User], AnimeError>) -> Void) {
         
         
-        guard let url = URL(string: urls.getUsersLocalUrl) else {
+        guard let url = URL(string: urls.getUsersUrl) else {
                 return
             }
         
@@ -24,13 +25,13 @@ public struct XouBaseApiCalls: XouBaseApiServiceProtocol {
             timeoutInterval: 10.0)
 
 
-        request.httpMethod = "GET"
+        request.httpMethod = httpMethods.get
 
         let session = URLSession.shared
         let dataTask = session.dataTask(with: request as URLRequest) { data, _, _ in
             guard let jsonData = data else {
                 completetionHandler(.failure(.noDataAvailable))
-                return
+                return 
             }
             do {
                 let decoder = JSONDecoder()
@@ -45,7 +46,7 @@ public struct XouBaseApiCalls: XouBaseApiServiceProtocol {
         dataTask.resume()
       }
     
-        public  func registerUser(theUser: User,completetionHandler: @escaping(Result<User, AnimeError>) -> Void) {
+        public func registerUser(theUser: User, completetionHandler: @escaping(Result<User, AnimeError>) -> Void) {
 
             do {
                 guard let url = URL(string: urls.registerUserUrl) else {
@@ -55,7 +56,7 @@ public struct XouBaseApiCalls: XouBaseApiServiceProtocol {
                   var request = URLRequest(url: url)
 
                   
-                request.httpMethod = "POST"
+                request.httpMethod = httpMethods.post
                   request.addValue("application/json", forHTTPHeaderField: "Content-Type")
                   request.httpBody = try JSONEncoder().encode(theUser)
 
@@ -78,7 +79,7 @@ public struct XouBaseApiCalls: XouBaseApiServiceProtocol {
                 completetionHandler(.failure(.cannotProcessData))
             }
         }
-    public  func loginUser(theLoginModel: Login,completetionHandler: @escaping(Result<User, AnimeError>) -> Void) {
+    public func loginUser(theLoginModel: Login, completetionHandler: @escaping(Result<User, AnimeError>) -> Void) {
 
             do {
                 guard let url = URL(string: urls.loginUserUrl) else {
@@ -88,7 +89,7 @@ public struct XouBaseApiCalls: XouBaseApiServiceProtocol {
                   var request = URLRequest(url: url)
 
                   
-                request.httpMethod = "POST"
+                request.httpMethod = httpMethods.post
                   request.addValue("application/json", forHTTPHeaderField: "Content-Type")
                   request.httpBody = try JSONEncoder().encode(theLoginModel)
 
