@@ -7,8 +7,8 @@
 
 import UIKit
 
-extension UIColor {
-    static func rgb(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) -> UIColor {
+public extension UIColor {
+     func rgb(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) -> UIColor {
         return UIColor(red: red/255, green: green/255, blue: blue/255, alpha: 1.0)
     }
 }
@@ -47,5 +47,28 @@ public extension UIViewController {
     }
 }
 
+extension UIView {
+    func setBackgroundGradient(colorOne: UIColor, colorTwo: UIColor) {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = bounds
+        gradientLayer.colors = [colorOne.cgColor, colorTwo.cgColor]
+        gradientLayer.locations = [0.0, 1.0]
+        gradientLayer.startPoint = CGPoint(x: 1.0, y:1.0)
+        gradientLayer.endPoint = CGPoint(x: 0.0, y:0.0)
+        
+        layer.insertSublayer(gradientLayer, at: 0)
+    }
+}
 
-
+public extension UITableViewCell {
+        func setBackgroundCellGradient(colorOne: UIColor, colorTwo: UIColor) {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = bounds
+        gradientLayer.colors = [colorOne.cgColor, colorTwo.cgColor]
+        gradientLayer.locations = [0.0, 1.0]
+        gradientLayer.startPoint = CGPoint(x: 0.5, y:1.0)
+        gradientLayer.endPoint = CGPoint(x: 0.5, y:0.0)
+        
+        layer.insertSublayer(gradientLayer, at: 0)
+    }
+}
